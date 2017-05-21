@@ -1,11 +1,12 @@
-#How to visualise data - lesson 1
+#How to visualise data using t-SNE - lesson 1
 
 import pandas as pd  #data analysis library to help read .CSV files
 import numpy as np  #helps transform data into a format a machine learning model can understand
 from sklearn.preprocessing import LabelEncoder  #scikit-learn helps create the machine learning model
 from sklearn.preprocessing import StandardScaler
 from sklearn.cross_validation import train_test_split
-from sklearn.metrics import accuracy_score  
+from sklearn.metrics import accuracy_score
+from sklearn.manifold import TSNE #standard scikit-learn module to reduce high dimensional data so it can be visualised in 2D or 3D
 
 import matplotlib.pyplot as plt  #helps to visualise the data
 
@@ -44,7 +45,6 @@ test_percentage = 0.1
 x_train, x_test, y_train, y_test = train_test_split(x_std, y, test_size = test_percentage, random_state = 0)
 
 # t-distributed Stochastic Neighbor Embedding (t-SNE) visualization
-from sklearn.manifold import TSNE
 tsne = TSNE(n_components=2, random_state=0)
 x_test_2d = tsne.fit_transform(x_test)
 
